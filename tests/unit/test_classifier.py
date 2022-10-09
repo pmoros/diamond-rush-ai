@@ -4,7 +4,7 @@ from indiana.elements import classifier, processor
 
 
 class TestClassifier(TestCase):
-    def test_classify_segments(self):
+    def test_classify_segments_level_01(self):
         base_path = "./resources/"
         RAW_IMAGE_URI = base_path + "levels/01.png"
         img = cv2.imread(RAW_IMAGE_URI)

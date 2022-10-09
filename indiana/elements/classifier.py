@@ -30,7 +30,7 @@ def classify(segment):
             methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR,
                        cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
 
-            method = methods[5]
+            method = methods[3]
             img_gray = cv2.cvtColor(template_image, cv2.COLOR_BGR2GRAY)
             template_gray = cv2.cvtColor(segment, cv2.COLOR_BGR2GRAY)
             max_b_w = cv2.matchTemplate(
