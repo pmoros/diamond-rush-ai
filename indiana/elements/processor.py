@@ -14,9 +14,9 @@ def from_image_to_segmented_matrix(img):
     ys = y_height//13
     # now slice up the image (in a shape that works well with subplots)
     splits = []
-    for x, i in enumerate(range(0, y_height, xs)):
+    for x, i in enumerate(range(0, y_height - xs, xs)):
         aux = []
-        for y, j in enumerate(range(0, x_width, ys)):
+        for y, j in enumerate(range(0, x_width - ys, ys)):
             aux.append(image_array[i:i+xs, j:j+ys])
         splits.append(aux)
     return splits
