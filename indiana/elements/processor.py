@@ -1,11 +1,23 @@
 import numpy as np
+from indiana.elements.classifier import classifier
+
+
+def from_image_to_map(img):
+    segmented_matrix = from_image_to_segmented_matrix(img)
+    map_matrix = []
+    for row in segmented_matrix:
+        aux = []
+        for cell in row:
+            aux.append(classifier.classify(cell))
+        map_matrix.append(aux)
+
+    return map_matrix
 
 
 def from_image_to_segmented_matrix(img):
     # crop image to remove the borders
     height, width, channels = img.shape
-    cropped_img = img[int(0.15*height):, int(0.01*width)
-                          :width - int(0.01*width)]
+    cropped_img = img[int(0.15*height):, int(0.01*width):width - int(0.01*width)]
 
     image_array = np.array(cropped_img)
     y_height = image_array.shape[0]
