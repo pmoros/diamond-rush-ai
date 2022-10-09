@@ -19,9 +19,9 @@ class TestProcessor(TestCase):
             logger.error(e)
 
     def test_from_image_to_map(self):
-        # uses level 01 by default
+        # tested up to level 5
         base_path = "./resources/"
-        level = "01"
+        level = "05"
         RAW_IMAGE_URI = base_path + "levels/{}.png".format(level)
         img = cv2.imread(RAW_IMAGE_URI)
         map_matrix = processor.from_image_to_map(img)
@@ -36,7 +36,7 @@ class TestProcessor(TestCase):
 
     def test_from_image_to_segmented_matrix(self):
         base_path = "./resources/"
-        RAW_IMAGE_URI = base_path + "levels/01.png"
+        RAW_IMAGE_URI = base_path + "levels/02.png"
         img = cv2.imread(RAW_IMAGE_URI)
         segmented_matrix = processor.from_image_to_segmented_matrix(img)
         self.assertEqual(
