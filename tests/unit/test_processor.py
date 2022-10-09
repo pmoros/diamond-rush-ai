@@ -12,8 +12,11 @@ logger.setLevel(logging.DEBUG)
 
 class TestProcessor(TestCase):
     def setUp(self):
-        file_handler = logging.FileHandler('./logs/test_processor.log')
-        logger.addHandler(file_handler)
+        try:
+            file_handler = logging.FileHandler('./logs/test_processor.log')
+            logger.addHandler(file_handler)
+        except Exception as e:
+            logger.error(e)
 
     def test_from_image_to_map(self):
         # uses level 01 by default
