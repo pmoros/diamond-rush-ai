@@ -12,22 +12,30 @@ def level_partitions(level):
     img = cv2.imread(RAW_IMAGE_URI)
     segmented_matrix = processor.from_image_to_segmented_matrix(img)
 
-    storage_path = "./resources/partitions/"
+    return segmented_matrix
+
+
+def store_partitions(level, partitions):
+
+    storage_path = "./utilities/partitions/"
     if not os.path.exists(storage_path):
         mkdir(storage_path)
     storage_path = storage_path + "level_{}/".format(level)
     if not os.path.exists(storage_path):
         mkdir(storage_path)
 
-    for i, row in enumerate(segmented_matrix):
+    for i, row in enumerate(partitions):
         for j, col in enumerate(row):
             image_path = storage_path + f"{i}_{j}.png"
             print(image_path)
-            cv2.imwrite(image_path, segmented_matrix[i][j])
+            cv2.imwrite(image_path, partitions[i][j])
 
 
 if __name__ == "__main__":
-    level = sys.argv[1]
+    program = sys.argv[1]
+    mode = sys.argv[2]
+    level = sys.argv[3]
 
-    if (level_partitions(level)):
-        print("Done")
+    if program == "part":
+        if mode == "all":
+            store_partitions(level, level_partitions(level))
