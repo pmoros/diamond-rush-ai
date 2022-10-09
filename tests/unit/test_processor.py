@@ -10,7 +10,7 @@ class TestProcessor(TestCase):
         pass
 
     def test_from_image_to_segmented_matrix(self):
-        base_path = "./resources/templates/"
+        base_path = "./resources/"
         RAW_IMAGE_URI = base_path + "levels/01.png"
         img = cv2.imread(RAW_IMAGE_URI)
         segmented_matrix = processor.from_image_to_segmented_matrix(img)

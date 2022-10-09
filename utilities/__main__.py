@@ -6,7 +6,7 @@ import os.path
 
 
 def level_partitions(level):
-    base_path = "./resources/templates/levels/"
+    base_path = "./resources/levels/"
     RAW_IMAGE_URI = base_path + "{}.png".format(level)
     print(RAW_IMAGE_URI)
     img = cv2.imread(RAW_IMAGE_URI)

@@ -159,4 +159,6 @@ dmypy.json
 .pyre/
 
 # Program files
-/resources
+! /resources
+/resources/partitions/*
+/resources/samples/*
