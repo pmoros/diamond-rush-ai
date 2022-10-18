@@ -1,8 +1,10 @@
 import logging
 from unittest import TestCase
 from unittest.mock import mock_open, patch
+
 import cv2
 import numpy as np
+
 from indiana.elements import processor
 
 logging.basicConfig(level=logging.DEBUG)

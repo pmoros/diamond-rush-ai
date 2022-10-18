@@ -1,6 +1,12 @@
+import cv2
 import numpy as np
 
-from indiana.elements.classifier import classifier
+from elements.classifier import classifier
+
+
+def get_game_map(path_to_image):
+    img = cv2.imread(path_to_image)
+    return from_image_to_map(img)
 
 
 def from_image_to_map(img):
@@ -18,7 +24,8 @@ def from_image_to_map(img):
 def from_image_to_segmented_matrix(img):
     # crop image to remove the borders
     height, width, channels = img.shape
-    cropped_img = img[int(0.15*height):, int(0.01*width):width - int(0.01*width)]
+    cropped_img = img[int(0.15*height):, int(0.01*width)
+                          :width - int(0.01*width)]
 
     image_array = np.array(cropped_img)
     y_height = image_array.shape[0]
