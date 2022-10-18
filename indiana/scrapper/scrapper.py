@@ -22,16 +22,19 @@ class Scrapper():
         self.driver.get(self.target)
 
     def move_player(self, direction):
+        action_chains = ActionChains(self.driver)
         if direction == "up":
-            pass
+            ActionChains(self.driver).send_keys(
+                Keys.ARROW_UP).perform()
         elif direction == "down":
-            pass
+            ActionChains(self.driver).send_keys(
+                Keys.ARROW_DOWN).perform()
         elif direction == "left":
-            pass
+            ActionChains(self.driver).send_keys(
+                Keys.ARROW_LEFT).perform()
         elif direction == "right":
-            # keyboard.press_and_release("right")
-            ActionChains(self.driver).key_down(Keys.ARROW_RIGHT).pause(
-                0.2).key_up(Keys.ARROW_RIGHT).perform()
+            action_chains.send_keys(
+                Keys.ARROW_RIGHT).perform()
 
     def save_game_map_auto(self, path_to_image):
         # Sets the levels to passed
@@ -39,7 +42,7 @@ class Scrapper():
         self.canvas = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//canvas"))
         )
-        sleep(2)
+        sleep(6)
         self.canvas.screenshot(path_to_image)
         return path_to_image
 

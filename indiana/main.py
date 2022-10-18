@@ -13,13 +13,11 @@ if __name__ == '__main__':
     scrapper.save_game_map_auto(path_to_image)
     # game_map = processor.get_game_map(path_to_image)
 
-    # sample_moves = ["right", "right", "right",
-    #                 "right", "right", "down", "down"]
+    sample_moves = ["right", "right", "right",
+                    "right", "right", "down", "down"]
 
-    # for move in sample_moves:
-    #     scrapper.move_player(move)
-    scrapper.move_player("right")
-    scrapper.move_player("right")
+    for move in sample_moves:
+        scrapper.move_player(move)
 
     sleep(1)
 
