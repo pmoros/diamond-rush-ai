@@ -1,3 +1,4 @@
+import sys
 from time import sleep
 
 import elements.processor as processor
@@ -8,10 +9,13 @@ path_to_image = "resources/current_game.png"
 
 
 if __name__ == '__main__':
-    level = "2"
+    level = sys.argv[1]
     scrapper = Scrapper(target)
     scrapper.save_game_map_auto(path_to_image)
-    # game_map = processor.get_game_map(path_to_image)
+    game_map = processor.get_game_map(path_to_image)
+    for r in game_map:
+        print(r)
+
     if level == "1":
         sample_moves = ["right", "right", "right",
                         "right", "right", "down", "down", "down", "left", "left", "left", "left", "left", "down", "down", "right", "down", "right", "right", "right", "right", "down"]

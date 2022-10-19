@@ -16,7 +16,7 @@ class Scrapper():
         self.driver.get(self.target)
         self.canvas = None
         self.load()
-        self.wait_time = 0.1
+        self.wait_time = 0.03
 
     def load(self):
         self.max_level = 5
@@ -51,16 +51,14 @@ class Scrapper():
         self.canvas = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//canvas"))
         )
-        sleep(8)
+        sleep(6)
         self.canvas.screenshot(path_to_image)
         return path_to_image
 
     def save_game_map(self, path_to_image):
         # Sets the levels to passed
         self._set_local_storage()
-        # Ask the user to start the game
-        input("Press Enter to start the game...")
-        sleep(5)
+
         self.canvas = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//canvas"))
         )
