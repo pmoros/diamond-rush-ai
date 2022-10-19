@@ -14,7 +14,7 @@ if __name__ == '__main__':
     # game_map = processor.get_game_map(path_to_image)
 
     sample_moves = ["right", "right", "right",
-                    "right", "right", "down", "down"]
+                    "right", "right", "down", "down", "down", "left", "left", "left", "left", "left", "down", "down", "right", "down", "right", "right", "right", "right", "down"]
 
     for move in sample_moves:
         scrapper.move_player(move)

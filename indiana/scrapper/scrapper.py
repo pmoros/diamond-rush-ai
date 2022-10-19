@@ -16,25 +16,34 @@ class Scrapper():
         self.driver.get(self.target)
         self.canvas = None
         self.load()
+        self.wait_time = 0.1
 
     def load(self):
         self.max_level = 5
         self.driver.get(self.target)
 
     def move_player(self, direction):
+        sleep(0.5)
         action_chains = ActionChains(self.driver)
         if direction == "up":
-            ActionChains(self.driver).send_keys(
-                Keys.ARROW_UP).perform()
+            action_chains.key_down(Keys.ARROW_UP).pause(
+                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_UP).pause(self.wait_time).perform()
         elif direction == "down":
-            ActionChains(self.driver).send_keys(
-                Keys.ARROW_DOWN).perform()
+            action_chains.key_down(Keys.ARROW_DOWN).pause(
+                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_DOWN).pause(
+                self.wait_time).perform()
         elif direction == "left":
-            ActionChains(self.driver).send_keys(
-                Keys.ARROW_LEFT).perform()
+            action_chains.key_down(Keys.ARROW_LEFT).pause(
+                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_LEFT).pause(
+                self.wait_time).perform()
         elif direction == "right":
-            action_chains.send_keys(
-                Keys.ARROW_RIGHT).perform()
+            action_chains.key_down(Keys.ARROW_RIGHT).pause(
+                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_RIGHT).pause(
+                self.wait_time).perform()
 
     def save_game_map_auto(self, path_to_image):
         # Sets the levels to passed
