@@ -51,7 +51,7 @@ class Scrapper():
         self.canvas = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//canvas"))
         )
-        sleep(6)
+        sleep(8)
         self.canvas.screenshot(path_to_image)
         return path_to_image
 
