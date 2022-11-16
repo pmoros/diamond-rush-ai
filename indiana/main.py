@@ -16,6 +16,7 @@ if __name__ == '__main__':
     for r in game_map:
         print(r)
 
+    # Here goes the planifier.get_route(game_map)
     if level == "1":
         sample_moves = ["right", "right", "right",
                         "right", "right", "down", "down", "down", "left", "left", "left", "left", "left", "down", "down", "right", "down", "right", "right", "right", "right", "down"]
@@ -24,7 +25,8 @@ if __name__ == '__main__':
                         "left", "up", "up", "up", "up", "up", "up", "up", "up", "up", "right",
                         "up", "right", "right", "down", "right", "down", "down", "right",
                         "right", "down", "left", "left", "down", "down", "left", "left", "down"]
-
+        
+    # Here goes the processor.send_moves(planifier_route)
     for move in sample_moves:
         scrapper.move_player(move)
 
