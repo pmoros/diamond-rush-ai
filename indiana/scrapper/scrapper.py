@@ -9,45 +9,43 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Scrapper():
-    def __init__(self, target):
-        self.target = target
+    def __init__(self, target, max_level=10, wait_time=0.03):
+
         self.driver = webdriver.Firefox()
         self.local_storage = LocalStorage(self.driver)
-        self.driver.get(self.target)
-        self.canvas = None
-        self.load()
-        self.wait_time = 0.03
 
-    def load(self):
-        self.max_level = 5
+        self.load(target, wait_time, max_level)
+
+    def load(self, target, wait_time, max_level):
+        self.target = target
+        self.wait_time = wait_time
+        self.max_level = max_level
+        self.canvas = None
+
         self.driver.get(self.target)
+        self._set_local_storage()
 
     def move_player(self, direction):
-        sleep(0.5)
+        sleep(self.wait_time)
         action_chains = ActionChains(self.driver)
         if direction == "up":
             action_chains.key_down(Keys.ARROW_UP).pause(
                 self.wait_time).perform()
-            action_chains.key_up(Keys.ARROW_UP).pause(self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_UP).perform()
         elif direction == "down":
             action_chains.key_down(Keys.ARROW_DOWN).pause(
                 self.wait_time).perform()
-            action_chains.key_up(Keys.ARROW_DOWN).pause(
-                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_DOWN).perform()
         elif direction == "left":
             action_chains.key_down(Keys.ARROW_LEFT).pause(
                 self.wait_time).perform()
-            action_chains.key_up(Keys.ARROW_LEFT).pause(
-                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_LEFT).perform()
         elif direction == "right":
             action_chains.key_down(Keys.ARROW_RIGHT).pause(
                 self.wait_time).perform()
-            action_chains.key_up(Keys.ARROW_RIGHT).pause(
-                self.wait_time).perform()
+            action_chains.key_up(Keys.ARROW_RIGHT).perform()
 
     def save_game_map_auto(self, path_to_image):
-        # Sets the levels to passed
-        self._set_local_storage()
         self.canvas = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//canvas"))
         )
@@ -56,10 +54,7 @@ class Scrapper():
         return path_to_image
 
     def save_game_map(self, path_to_image):
-        # Sets the levels to passed
-        self._set_local_storage()
-
-        self.canvas = WebDriverWait(self.driver, 10).until(
+        self.canvas = WebDriverWait(self.driver, 2).until(
             EC.presence_of_element_located((By.XPATH, "//canvas"))
         )
         self.canvas.screenshot(path_to_image)

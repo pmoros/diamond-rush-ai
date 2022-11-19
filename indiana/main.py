@@ -9,12 +9,10 @@ path_to_image = "resources/current_game.png"
 
 
 if __name__ == '__main__':
-    level = sys.argv[1]
-    scrapper = Scrapper(target)
-    scrapper.save_game_map_auto(path_to_image)
+    scrapper = Scrapper(target, max_level=10, wait_time=0.1)
+    level = input("Enter level: ")
+    scrapper.save_game_map(path_to_image)
     game_map = processor.get_game_map(path_to_image)
-    for r in game_map:
-        print(r)
 
     if level == "1":
         sample_moves = ["right", "right", "right",
