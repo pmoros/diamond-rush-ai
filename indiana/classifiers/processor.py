@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from elements.classifier import classifier
+from .classifier import classifier
 
 
 def get_game_map(path_to_image):

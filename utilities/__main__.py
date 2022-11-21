@@ -1,6 +1,6 @@
 import sys
 import cv2
-from indiana.elements import processor
+from . import indiana
 from os import mkdir
 import os.path
 
@@ -10,7 +10,7 @@ def level_partitions(level):
     RAW_IMAGE_URI = base_path + "{}.png".format(level)
     print(RAW_IMAGE_URI)
     img = cv2.imread(RAW_IMAGE_URI)
-    segmented_matrix = processor.from_image_to_segmented_matrix(img)
+    segmented_matrix = indiana.processor.from_image_to_segmented_matrix(img)
 
     return segmented_matrix
 
@@ -39,3 +39,6 @@ if __name__ == "__main__":
     if program == "part":
         if mode == "all":
             store_partitions(level, level_partitions(level))
+    elif program == "start-scrapper":
+        print("Starting scrapper")
+        indiana.scrapper.start()

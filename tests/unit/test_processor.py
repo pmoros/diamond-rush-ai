@@ -5,7 +5,7 @@ from unittest.mock import mock_open, patch
 import cv2
 import numpy as np
 
-from indiana.elements import processor
+from indiana.classifiers import processor
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

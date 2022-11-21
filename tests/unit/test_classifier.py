@@ -4,7 +4,7 @@ from random import choice
 import sys
 import cv2
 from unittest import TestCase
-from indiana.elements import classifier
+from indiana.classifiers import classifier
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
