@@ -1,15 +1,20 @@
-import scrapper
+from scrapper import Scrapper
+from map_reader import MapReader
 
 
 class GameEngine():
     def __init__(self):
-        self.scrapper = scrapper.Scrapper()
+        self.scrapper = Scrapper()
+        self.map_reader = MapReader()
 
     def launch_game(self, target, max_level=20, wait_time=0.03):
         self.scrapper.launch_game(target)
+        # removes the tutorial
+        self.scrapper.restart_level()
 
     def read_map(self):
-        return self.scrapper.read_map()
+        map_png = self.scrapper.read_map()
+        return self.map_reader.get_game_map_from_image(map_png)
 
     def restart_level(self):
         return self.scrapper.restart_level()

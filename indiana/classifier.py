@@ -55,6 +55,3 @@ class Classifier:
         components_folders = listdir(self.base_path)
 
         return components_folders
-
-
-classifier = Classifier()

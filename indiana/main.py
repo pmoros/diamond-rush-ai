@@ -9,4 +9,6 @@ if __name__ == '__main__':
     game_engine.launch_game(target)
 
     input("Press any key to continue...")
-    game_engine.restart_level()
+    game_map = game_engine.read_map()
+    for row in game_map:
+        print(row)

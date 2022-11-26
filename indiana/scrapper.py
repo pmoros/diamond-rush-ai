@@ -26,6 +26,7 @@ class Scrapper():
         self._set_canvas()
 
     def read_map(self):
+        self._set_canvas()
         element_png = self.canvas.screenshot_as_png
         return element_png
 
