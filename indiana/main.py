@@ -9,7 +9,7 @@ def setup_images():
     input("Press any key to continue...")
     for i in range(1, 21):
         image_name = f"images/l{i}.png"
-        game_engine.save_image(image_name)
+        game_engine._save_image(image_name)
         print(f"Saved image {image_name}")
         sleep(7)
 

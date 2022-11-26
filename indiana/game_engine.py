@@ -14,7 +14,9 @@ class GameEngine():
 
     def read_map(self):
         map_png = self.scrapper.read_map()
-        return self.map_reader.get_game_map_from_image(map_png)
+        map_matrix = self.map_reader.get_game_map_from_image(map_png)
+        self.game_map = GameMap(map_matrix)
+        return self.game_map
 
     def restart_level(self):
         return self.scrapper.restart_level()
@@ -22,7 +24,7 @@ class GameEngine():
     def close_game(self):
         self.scrapper.close()
 
-    def save_image(self, name):
+    def _save_image(self, name):
         return self.map_reader.save_image(self.scrapper.read_map(), name)
 
 
@@ -40,4 +42,10 @@ class GameMap():
         raise NotImplementedError
 
     def is_valid(self):
+        raise NotImplementedError
+
+    def _set_exit(self, map_matrix):
+        raise NotImplementedError
+
+    def _set_current_position(self, map_matrix):
         raise NotImplementedError
