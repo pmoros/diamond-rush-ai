@@ -22,6 +22,9 @@ class GameEngine():
     def close_game(self):
         self.scrapper.close()
 
+    def save_image(self, name):
+        return self.map_reader.save_image(self.scrapper.read_map(), name)
+
 
 class GameMap():
     def __init__(self, map_matrix):
