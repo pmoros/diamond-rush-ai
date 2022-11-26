@@ -22,7 +22,7 @@ if __name__ == '__main__':
     game_engine.launch_game(target)
 
     input("Press any key to continue...")
-    game_map = game_engine.read_map()
-    for row in game_map:
-        print(row)
+    game_map = game_engine.start_game()
+    game_map.print_map()
     input("Press any key to continue...")
+    game_engine.close_game()
