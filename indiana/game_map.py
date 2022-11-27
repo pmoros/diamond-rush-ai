@@ -11,13 +11,34 @@ class MapReader():
     def read_map(self, map_png):
         matrix_map = self.get_game_map_from_image(map_png)
         nodes_matrix = self.generate_nodes_matrix(matrix_map)
-        # filtered_matrix = self.filter_nodes_matrix(nodes_matrix)
-        return nodes_matrix
+        filtered_matrix = self.filter_nodes_matrix(nodes_matrix)
+        return filtered_matrix
 
-    def filter_matrix(nodes_matrix):
-        pass
+    def filter_nodes_matrix(self, nodes_matrix):
+        """deletes nodes that are obstacles or empty
+        Args:
+            nodes_matrix (list(list(Node))): nodes matrix
+        """
+        filtered_nodes = []
+        for i in range(len(nodes_matrix)):
+            for j in range(len(nodes_matrix[i])):
+                node = nodes_matrix[i][j]
+                item = node.items[0]
+                if item.category == classifier.ItemCategory.BARRIER:
+                    continue
+                else:
+                    neighbors = self._get_matrix_neighbors(nodes_matrix, i, j)
+                    node.neighbors = neighbors
+                    for neighbor in node.neighbors:
+                        neighbor_item = neighbor.items[0]
+                        if neighbor_item.category == classifier.ItemCategory.BARRIER:
+                            node.neighbors.remove(neighbor)
 
-    def generate_nodes_matrix(matrix_map):
+                    filtered_nodes.append(node)
+
+        return filtered_nodes
+
+    def generate_nodes_matrix(self, matrix_map):
         nodes_matrix = []
         for i in range(len(matrix_map)):
             row = []
@@ -29,6 +50,8 @@ class MapReader():
                 node.items = [item]
                 row.append(node)
             nodes_matrix.append(row)
+
+        return nodes_matrix
 
     def get_game_map_from_image(self, jpeg_original):
         jpeg_as_np = np.frombuffer(jpeg_original, dtype=np.uint8)
@@ -103,5 +126,5 @@ class Node():
 
 
 class Item():
-    def __init__(self, category):
-        self.category = category
+    def __init__(self):
+        self.category = None
