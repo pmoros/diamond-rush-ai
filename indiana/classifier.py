@@ -1,4 +1,3 @@
-# TODO: Refactor base_path
 from enum import Enum
 from os import listdir
 import numpy as np
@@ -37,21 +36,16 @@ class Classifier:
         return cv2.imread(path)
 
 
-class Item(Enum):
-    WALL = 1
+class ItemCategory(Enum):
+    BARRIER = 1
     FLOOR = 2
     DIAMOND = 3
-    INDIANA = 4
+    PLAYER = 4
     EXIT = 5
-    LAVA = 6
-    PYKE_DOWN = 7
-    PYKE_UP = 8
-    KEY = 9
-    KEY_DOOR_OPEN = 10
-    KEY_DOOR_CLOSED = 11
-    ROCK = 12
-    HOLE = 13
-    BUTTOM = 14
-    BUTTOM_PRESSED = 15
-    BUTTOM_DOOR_CLOSED = 16
-    BUTTOM_DOOR_OPEN = 17
+    PYKE = 6
+    KEY = 7
+    KEY_DOOR = 8
+    ROCK = 9
+    HOLE = 10
+    BUTTOM = 11
+    BUTTOM_DOOR = 12

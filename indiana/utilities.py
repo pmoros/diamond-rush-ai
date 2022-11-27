@@ -1,6 +1,6 @@
 import numpy as np
 
-from classifier import Item
+from indiana.classifiers.classifier import ItemCategory
 
 
 class ClassifierUtility():
@@ -11,318 +11,318 @@ class ClassifierUtility():
     def get_matrix(self, level):
         if level == "1":
             matrix = [
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.INDIANA.value, Item.DIAMOND.value, Item.DIAMOND.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.DIAMOND.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.WALL.value, Item.FLOOR.value, Item.EXIT.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.PLAYER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.EXIT.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
 
         elif level == "2":
             matrix = [
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.LAVA.value, Item.LAVA.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value,
-                    Item.WALL.value, Item.LAVA.value, Item.LAVA.value, Item.WALL.value],
-                [Item.WALL.value, Item.PYKE_DOWN.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.DIAMOND.value, Item.LAVA.value, Item.LAVA.value, Item.WALL.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.DIAMOND.value, Item.LAVA.value, Item.LAVA.value, Item.WALL.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.PYKE_DOWN.value, Item.WALL.value, Item.LAVA.value, Item.LAVA.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value,
-                    Item.PYKE_DOWN.value, Item.WALL.value, Item.LAVA.value, Item.LAVA.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.EXIT.value, Item.WALL.value,
-                    Item.PYKE_DOWN.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.DIAMOND.value, Item.DIAMOND.value, Item.PYKE_DOWN.value, Item.PYKE_DOWN.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.INDIANA.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.DIAMOND.value, Item.DIAMOND.value, Item.WALL.value, Item.WALL.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.EXIT.value, ItemCategory.BARRIER.value,
+                    ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.PYKE.value, ItemCategory.PYKE.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.PLAYER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
 
         elif level == "3":
             matrix = [
                 # row 0
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 1
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 2
-                [Item.WALL.value, Item.INDIANA.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.KEY_DOOR_CLOSED.value, Item.FLOOR.value, Item.EXIT.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.PLAYER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.KEY_DOOR.value, ItemCategory.FLOOR.value, ItemCategory.EXIT.value, ItemCategory.BARRIER.value],
                 # row 3
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.PYKE_DOWN.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.PYKE.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 4
-                [Item.WALL.value, Item.WALL.value, Item.PYKE_DOWN.value, Item.WALL.value, Item.KEY_DOOR_CLOSED.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.KEY_DOOR.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 5
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.DIAMOND.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 6
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.KEY_DOOR_CLOSED.value, Item.KEY.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.KEY_DOOR.value, ItemCategory.KEY.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 7
-                [Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.DIAMOND.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 8
-                [Item.WALL.value, Item.KEY.value, Item.FLOOR.value, Item.WALL.value, Item.DIAMOND.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.KEY.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 9
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 10
-                [Item.WALL.value, Item.DIAMOND.value, Item.PYKE_DOWN.value, Item.PYKE_DOWN.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.KEY_DOOR_CLOSED.value, Item.KEY.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.PYKE.value, ItemCategory.PYKE.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.KEY_DOOR.value, ItemCategory.KEY.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 11
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.KEY.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.KEY.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 12
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
         elif level == "4":
             matrix = [
                 # row 0
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 1
-                [Item.WALL.value, Item.FLOOR.value, Item.INDIANA.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.PLAYER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 2
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.ROCK.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 3
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.DIAMOND.value, Item.DIAMOND.value,
-                    Item.FLOOR.value, Item.HOLE.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.FLOOR.value, ItemCategory.HOLE.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 4
-                [Item.WALL.value, Item.ROCK.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 5
-                [Item.WALL.value, Item.HOLE.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.ROCK.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 6
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.DIAMOND.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 7
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 8
-                [Item.WALL.value, Item.FLOOR.value, Item.ROCK.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 9
-                [Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.ROCK.value,
-                    Item.WALL.value, Item.HOLE.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value,
+                    ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 10
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.HOLE.value, Item.DIAMOND.value,
-                    Item.WALL.value, Item.EXIT.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.BARRIER.value, ItemCategory.EXIT.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 11
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.DIAMOND.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 12
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
         elif level == "5":
             matrix = [
                 # row 0
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 1
-                [Item.WALL.value, Item.EXIT.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.DIAMOND.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.EXIT.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 2
-                [Item.WALL.value, Item.INDIANA.value, Item.PYKE_DOWN.value, Item.FLOOR.value, Item.FLOOR.value, Item.KEY.value,
-                    Item.WALL.value, Item.DIAMOND.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.PLAYER.value, ItemCategory.PYKE.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.KEY.value,
+                    ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 3
-                [Item.WALL.value, Item.PYKE_DOWN.value, Item.WALL.value, Item.WALL.value, Item.ROCK.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.KEY_DOOR_CLOSED.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.KEY_DOOR.value, ItemCategory.BARRIER.value],
                 # row 4
-                [Item.WALL.value, Item.DIAMOND.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.HOLE.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.BARRIER.value],
                 # row 5
-                [Item.WALL.value, Item.DIAMOND.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 6
-                [Item.WALL.value, Item.HOLE.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 7
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 8
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 9
-                [Item.WALL.value, Item.LAVA.value, Item.LAVA.value, Item.LAVA.value, Item.FLOOR.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.ROCK.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value],
                 # row 10
-                [Item.WALL.value, Item.LAVA.value, Item.LAVA.value, Item.LAVA.value, Item.FLOOR.value,
-                    Item.PYKE_DOWN.value, Item.PYKE_DOWN.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.PYKE.value, ItemCategory.PYKE.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 11
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.DIAMOND.value, Item.DIAMOND.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 12
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
 
         elif level == "6":
             matrix = [
                 # row 0
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 1
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.INDIANA.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.PLAYER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 2
-                [Item.WALL.value, Item.FLOOR.value, Item.ROCK.value, Item.FLOOR.value, Item.DIAMOND.value, Item.DIAMOND.value,
-                    Item.FLOOR.value, Item.ROCK.value, Item.KEY.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.FLOOR.value, ItemCategory.ROCK.value, ItemCategory.KEY.value, ItemCategory.BARRIER.value],
                 # row 3
-                [Item.WALL.value, Item.HOLE.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value,
-                    Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.HOLE.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.BARRIER.value],
                 # row 4
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 5
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 6
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value,
-                    Item.KEY_DOOR_CLOSED.value, Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.KEY_DOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 7
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value, Item.EXIT.value,
-                    Item.DIAMOND.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.EXIT.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 8
-                [Item.WALL.value, Item.WALL.value, Item.KEY_DOOR_CLOSED.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.PYKE_DOWN.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.KEY_DOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 9
-                [Item.WALL.value, Item.HOLE.value, Item.FLOOR.value, Item.DIAMOND.value, Item.DIAMOND.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 10
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.PYKE_DOWN.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.BARRIER.value],
                 # row 11
-                [Item.WALL.value, Item.PYKE_DOWN.value, Item.FLOOR.value, Item.DIAMOND.value, Item.KEY.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.KEY.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 12
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
 
         elif level == "7":
             matrix = [
                 # row 0
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 1
-                [Item.WALL.value, Item.WALL.value, Item.ROCK.value, Item.FLOOR.value, Item.ROCK.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 2
-                [Item.WALL.value, Item.ROCK.value, Item.INDIANA.value, Item.ROCK.value, Item.FLOOR.value, Item.ROCK.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.PLAYER.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 3
-                [Item.WALL.value, Item.FLOOR.value, Item.ROCK.value, Item.WALL.value, Item.DIAMOND.value,
-                    Item.WALL.value, Item.ROCK.value, Item.WALL.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 4
-                [Item.WALL.value, Item.ROCK.value, Item.FLOOR.value, Item.ROCK.value, Item.FLOOR.value,
-                    Item.ROCK.value, Item.WALL.value, Item.WALL.value, Item.ROCK.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value,
+                    ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value],
                 # row 5
-                [Item.WALL.value, Item.WALL.value, Item.ROCK.value, Item.FLOOR.value, Item.HOLE.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.KEY.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.HOLE.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.KEY.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 6
-                [Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value,
-                    Item.ROCK.value, Item.WALL.value, Item.FLOOR.value, Item.ROCK.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value,
+                    ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value],
                 # row 7
-                [Item.WALL.value, Item.ROCK.value, Item.WALL.value, Item.WALL.value, Item.ROCK.value,
-                    Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value,
+                    ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value],
                 # row 8
-                [Item.WALL.value, Item.HOLE.value, Item.ROCK.value, Item.FLOOR.value, Item.FLOOR.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.FLOOR.value, Item.HOLE.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.HOLE.value, ItemCategory.BARRIER.value],
                 # row 9
-                [Item.WALL.value, Item.FLOOR.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value,
-                    Item.KEY_DOOR_CLOSED.value, Item.WALL.value, Item.WALL.value, Item.ROCK.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.KEY_DOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value],
                 # row 10
-                [Item.WALL.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value],
                 # row 11
-                [Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value, Item.FLOOR.value,
-                    Item.EXIT.value, Item.FLOOR.value, Item.WALL.value, Item.ROCK.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value,
+                    ItemCategory.EXIT.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value],
                 # row 12
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
 
         elif level == "8":
             matrix = [
                 # row 0
-                [Item.WALL.value, Item.WALL.value, Item.DIAMOND.value, Item.FLOOR.value, Item.DIAMOND.value,
-                    Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 1
-                [Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.DIAMOND.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 2
-                [Item.WALL.value, Item.WALL.value, Item.DIAMOND.value, Item.WALL.value, Item.FLOOR.value, Item.EXIT.value,
-                    Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.EXIT.value,
+                    ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 3
-                [Item.WALL.value, Item.WALL.value, Item.FLOOR.value, Item.DIAMOND.value, Item.FLOOR.value,
-                    Item.DIAMOND.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.FLOOR.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 4
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.KEY_DOOR_CLOSED.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.KEY_DOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 5
-                [Item.WALL.value, Item.WALL.value, Item.BUTTOM.value, Item.FLOOR.value, Item.ROCK.value,
-                    Item.INDIANA.value, Item.FLOOR.value, Item.DIAMOND.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BUTTOM.value, ItemCategory.FLOOR.value, ItemCategory.ROCK.value,
+                    ItemCategory.PLAYER.value, ItemCategory.FLOOR.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 6
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.BUTTOM_DOOR_CLOSED.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BUTTOM_DOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 7
-                [Item.WALL.value, Item.WALL.value, Item.HOLE.value, Item.ROCK.value, Item.DIAMOND.value,
-                    Item.PYKE_DOWN.value, Item.BUTTOM_DOOR_CLOSED.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.ROCK.value, ItemCategory.DIAMOND.value,
+                    ItemCategory.PYKE.value, ItemCategory.BUTTOM_DOOR.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 8
-                [Item.WALL.value, Item.WALL.value, Item.KEY.value, Item.WALL.value, Item.PYKE_DOWN.value,
-                    Item.PYKE_DOWN.value, Item.WALL.value, Item.FLOOR.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.KEY.value, ItemCategory.BARRIER.value, ItemCategory.PYKE.value,
+                    ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.FLOOR.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 9
-                [Item.WALL.value, Item.WALL.value, Item.ROCK.value, Item.WALL.value, Item.PYKE_DOWN.value,
-                    Item.PYKE_DOWN.value, Item.WALL.value, Item.PYKE_DOWN.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.ROCK.value, ItemCategory.BARRIER.value, ItemCategory.PYKE.value,
+                    ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.PYKE.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 10
-                [Item.WALL.value, Item.WALL.value, Item.HOLE.value, Item.ROCK.value, Item.FLOOR.value,
-                    Item.DIAMOND.value, Item.BUTTOM.value, Item.DIAMOND.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.HOLE.value, ItemCategory.ROCK.value, ItemCategory.FLOOR.value,
+                    ItemCategory.DIAMOND.value, ItemCategory.BUTTOM.value, ItemCategory.DIAMOND.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 11
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value],
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value],
                 # row 12
-                [Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value,
-                    Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value, Item.WALL.value]
+                [ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value,
+                    ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value, ItemCategory.BARRIER.value]
             ]
 
         return np.array(matrix)
@@ -337,11 +337,12 @@ class ClassifierUtility():
 if __name__ == "__main__":
     classifier_utility = ClassifierUtility()
     # save a level
-    level = input("Enter the level number: ")
-    matrix = classifier_utility.get_matrix(level)
-    path_to_matrix = "./resources/levels/matrices/l" + level + ".txt"
-    classifier_utility.save_matrix(matrix, path_to_matrix)
-
-    # read a level
-    level_matrix = classifier_utility.load_matrix(path_to_matrix)
-    print(level_matrix)
+    max_level = 8
+    for i in range(1, max_level+1):
+        level = str(i)
+        matrix = classifier_utility.get_matrix(level)
+        path_to_matrix = "./resources/levels/matrices/l" + level + ".txt"
+        classifier_utility.save_matrix(matrix, path_to_matrix)
+        # read a level
+        level_matrix = classifier_utility.load_matrix(path_to_matrix)
+        print(level_matrix)
