@@ -46,7 +46,7 @@ class MapReader():
                 item = Item()
                 item.category = classifier.ItemCategory(matrix_map[i][j])
                 node = Node()
-                node.coordinates = {"x": i, "y": j}
+                node.coordinates = {"x": j, "y": i}
                 node.items = [item]
                 row.append(node)
             nodes_matrix.append(row)
