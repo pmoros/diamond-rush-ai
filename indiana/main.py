@@ -22,7 +22,13 @@ if __name__ == '__main__':
     game_engine.launch_game(target)
 
     input("Press any key to continue...")
-    path = game_engine.play()
-    print(path)
-    input("Press any key to continue...")
+    playing = True
+
+    while playing:
+        path = game_engine.play()
+        print(path)
+        user_input = input("Press q to quit, any other key to continue: ")
+        if user_input == "q":
+            playing = False
+
     game_engine.close_game()

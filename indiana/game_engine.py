@@ -17,7 +17,8 @@ class GameEngine():
         self.path = self.processor.get_path(
             self.map, self.player_node, self.exit_node, self.diamonds_nodes)
         self.movements = self.processor.get_movements(self.path)
-        self.scrapper.move(self.movements)
+        # !active if possible
+        # self.scrapper.move(self.movements)
         return self.movements
 
     def launch_game(self, target, max_level=20, wait_time=0.03):
