@@ -22,7 +22,7 @@ if __name__ == '__main__':
     game_engine.launch_game(target)
 
     input("Press any key to continue...")
-    game_map = game_engine.read_map()
-    print(game_map)
+    path = game_engine.play()
+    print(path)
     input("Press any key to continue...")
     game_engine.close_game()

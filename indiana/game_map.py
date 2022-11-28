@@ -17,6 +17,23 @@ class MapReader():
 
         return self.graph
 
+    def get_player_node(self):
+        player_nodes = [x for x, y in self.graph.nodes(data=True) if y['spot'] == {
+            "active": True, "category": classifier.ItemCategory.PLAYER}]
+        player_node = player_nodes[0]
+        return player_node
+
+    def get_exit_node(self):
+        exit_nodes = [x for x, y in self.graph.nodes(data=True) if y['exit'] == {
+            "active": False, "category": classifier.ItemCategory.EXIT}]
+        exit_node = exit_nodes[0]
+        return exit_node
+
+    def get_diamonds_nodes(self):
+        diamonds_nodes = [x for x, y in self.graph.nodes(data=True) if y['collectable'] == {
+            "active": True, "category": classifier.ItemCategory.DIAMOND}]
+        return diamonds_nodes
+
     def generate_graph(self, nodes_list):
         graph = nx.Graph()
         for i, node in enumerate(nodes_list):

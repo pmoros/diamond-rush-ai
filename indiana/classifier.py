@@ -40,15 +40,15 @@ class ItemCategory(Enum):
     BARRIER = 1
     FLOOR = 2
     DIAMOND = 3
-    PLAYER = 4
-    EXIT = 5
-    PYKE = 6
-    KEY = 7
-    KEY_DOOR = 8
-    ROCK = 9
-    HOLE = 10
-    BUTTOM = 11
-    BUTTOM_DOOR = 12
+    EXIT = 4    
+    PYKE = 5
+    KEY = 6
+    KEY_DOOR = 7
+    ROCK = 8
+    HOLE = 9
+    BUTTOM = 10
+    BUTTOM_DOOR = 11
+    PLAYER = 12   
 
 
 class CellWeight(Enum):

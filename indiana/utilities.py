@@ -1,6 +1,6 @@
 import numpy as np
 
-from indiana.classifiers.classifier import ItemCategory
+from classifier import ItemCategory
 
 
 class ClassifierUtility():

@@ -9,6 +9,17 @@ class GameEngine():
         self.map_reader = game_map.MapReader()
         self.processor = processor.Processor()
 
+    def play(self, max_level=20, wait_time=0.03):
+        self.map = self.read_map()
+        self.player_node = self.map_reader.get_player_node()
+        self.exit_node = self.map_reader.get_exit_node()
+        self.diamonds_nodes = self.map_reader.get_diamonds_nodes()
+        self.path = self.processor.get_path(
+            self.map, self.player_node, self.exit_node, self.diamonds_nodes)
+        self.movements = self.processor.get_movements(self.path)
+        self.scrapper.move(self.movements)
+        return self.movements
+
     def launch_game(self, target, max_level=20, wait_time=0.03):
         self.scrapper.launch_game(target)
         # removes the tutorial

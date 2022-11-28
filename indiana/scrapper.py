@@ -34,6 +34,10 @@ class Scrapper():
         self.driver.refresh()
         sleep(1)
 
+    def move(self, movements):
+        for movement in movements:
+            self.move_player(movement)
+
     def move_player(self, direction):
         sleep(0.5)
         action_chains = ActionChains(self.driver)
