@@ -49,3 +49,24 @@ class ItemCategory(Enum):
     HOLE = 10
     BUTTOM = 11
     BUTTOM_DOOR = 12
+
+
+class CellWeight(Enum):
+    DIAMOND = 1
+    KEY = 2
+    FLOOR = 4
+    PYKE = 5
+    HOLE = 100
+    DOOR = 115
+    LOCKED = 777
+
+
+COLLECTABLES = [ItemCategory.DIAMOND, ItemCategory.KEY]
+DOORS = [ItemCategory.KEY_DOOR, ItemCategory.BUTTOM_DOOR]
+HOLES = [ItemCategory.HOLE]
+PYKES = [ItemCategory.PYKE]
+OBSTACLES = [ItemCategory.PYKE, ItemCategory.HOLE,
+             ItemCategory.KEY_DOOR, ItemCategory.BUTTOM_DOOR]
+SPOTABLES = [ItemCategory.PLAYER, ItemCategory.ROCK]
+BUTTONS = [ItemCategory.BUTTOM]
+EXITS = [ItemCategory.EXIT]

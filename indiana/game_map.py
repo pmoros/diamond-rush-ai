@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import networkx as nx
 
 import classifier
 
@@ -10,11 +11,77 @@ class MapReader():
 
     def read_map(self, map_png):
         matrix_map = self.get_game_map_from_image(map_png)
-        nodes_matrix = self.generate_nodes_matrix(matrix_map)
-        filtered_matrix = self.filter_nodes_matrix(nodes_matrix)
-        return filtered_matrix
+        nodes_list = self.generate_nodes_list(matrix_map)
+        filtered_list = self.filter_nodes_list(nodes_list)
+        self.graph = self.generate_graph(filtered_list)
 
-    def filter_nodes_matrix(self, nodes_matrix):
+        return self.graph
+
+    def generate_graph(self, nodes_list):
+        graph = nx.Graph()
+        for i, node in enumerate(nodes_list):
+            item_category = node.items[0].category
+            data_node = self.set_node_fields(item_category)
+            node_identifier = str(
+                node.coordinates["x"]) + "," + str(node.coordinates["y"])
+            for neighbor in node.neighbors:
+                data_neighbor = self.set_node_fields(
+                    neighbor.items[0].category)
+                neighbor_identifier = str(
+                    neighbor.coordinates["x"]) + "," + str(neighbor.coordinates["y"])
+                graph.add_edge(node_identifier, neighbor_identifier,
+                               weight=data_neighbor["weight"])
+
+                data_node["coordinates"] = node.coordinates
+                nx.set_node_attributes(graph, {node_identifier: data_node})
+                data_neighbor["coordinates"] = neighbor.coordinates
+                nx.set_node_attributes(
+                    graph, {neighbor_identifier: data_neighbor})
+
+        return graph
+
+    def set_node_fields(self, node_item_category):
+        data = {}
+        data["spot"] = {}
+        data["obstacle"] = {}
+        data["collectable"] = {}
+        data["button"] = {}
+        data["exit"] = {}
+        data["weight"] = classifier.CellWeight.FLOOR.value
+
+        if node_item_category in classifier.SPOTABLES:
+            data["spot"]["active"] = True
+            data["spot"]["category"] = node_item_category
+        elif node_item_category in classifier.OBSTACLES:
+            if node_item_category in classifier.DOORS:
+                data["obstacle"]["active"] = True
+                data["obstacle"]["category"] = node_item_category
+                data["weight"] = classifier.CellWeight.DOOR.value
+            elif node_item_category in classifier.HOLES:
+                data["obstacle"]["active"] = True
+                data["obstacle"]["category"] = node_item_category
+                data["weight"] = classifier.CellWeight.HOLE.value
+            elif node_item_category in classifier.PYKES:
+                data["obstacle"]["active"] = False
+                data["obstacle"]["category"] = node_item_category
+                data["weight"] = classifier.CellWeight.PYKE.value
+        elif node_item_category in classifier.COLLECTABLES:
+            data["collectable"]["active"] = True
+            data["collectable"]["category"] = node_item_category
+            if node_item_category == classifier.ItemCategory.DIAMOND:
+                data["weight"] = classifier.CellWeight.DIAMOND.value
+            else:
+                data["weight"] = classifier.CellWeight.KEY.value
+        elif node_item_category in classifier.BUTTONS:
+            data["button"]["active"] = False
+            data["button"]["category"] = node_item_category
+        elif node_item_category in classifier.EXITS:
+            data["exit"]["active"] = False
+            data["exit"]["category"] = node_item_category
+
+        return data
+
+    def filter_nodes_list(self, nodes_matrix):
         """deletes nodes that are obstacles or empty
         Args:
             nodes_matrix (list(list(Node))): nodes matrix
@@ -38,7 +105,7 @@ class MapReader():
 
         return filtered_nodes
 
-    def generate_nodes_matrix(self, matrix_map):
+    def generate_nodes_list(self, matrix_map):
         nodes_matrix = []
         for i in range(len(matrix_map)):
             row = []
